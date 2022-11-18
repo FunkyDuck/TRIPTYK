@@ -1,7 +1,7 @@
 # TRIPTYK FULLSTACK TEST 2022
 
 ## Demande de base
-Dans le cadre de ce test, il vous est demandé de faire un fork de ce repository et de réaliser une api json permettant le CRUD en nodeJS permettant les fonctionnalités suivantes :
+Dans le cadre de ce test, il vous est demandé de faire un fork de ce repository et de réaliser une api json en nodeJS permettant les fonctionnalités suivantes :
 
 1. lors d'une requète GET sur /api/v1/todos de récupérer une liste de todos
 2. lors d'une requète GET sur /api/v1/todos/**id** de récupérer le todo spécifié par l'**id**
@@ -26,8 +26,8 @@ Dans le cadre de ce test, il vous est demandé de faire un fork de ce repository
 
 ## Consignes Temporelle
 
-- Vous avez 4h pour le test
-- Si vous avez terminé avant faites le nous savoir par mail à l'adresse dev@triptyk.eu
+- Vous avez 4h pour le test.
+- Dès que vous avez terminé avant faites le nous savoir par mail à l'adresse dev@triptyk.eu avec le lien de votre repository.
 - Une réunion de 15 minutes dans l'après midi sera organisée pour faire un code review avec vous.
 
 
@@ -35,6 +35,7 @@ Dans le cadre de ce test, il vous est demandé de faire un fork de ce repository
 
 Nous allons vérifier votre api en utilisant l'outil insomnia ou Postman.
 Mettez tout sur le repository, meme si cela ne fonctionne pas, nous allons juger de ce que vous aurez réalisé dans sa globalité.
+N'hésitez pas à faire des "commits" réguliers pour que nous puissions ne rien perdre de votre travail.
 
 
 ### Nice to have
