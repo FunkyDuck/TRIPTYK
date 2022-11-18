@@ -1,4 +1,4 @@
-import {v4 as uuid} from 'uuid';
+const { v4: uuidv4 } = require('uuid');
 
 const express = require('express');
 const sqlite = require('sqlite3').verbose();
@@ -54,7 +54,38 @@ app.get('/api/v1/todos', function (req, res) {
     });
 });
 
+// GET BY ID
+app.get('/api/v1/todos/:uuid', function (req, res) {
+    db.get('SELECT * FROM todos WHERE uuid = ?', req.params.uuid, function (err, row) {
+        var output = [];
+        if (err) {
+            console.log(err);
+        } else {
+            output.push({ uuid: row.uuid, label: row.label, done: row.done });
+            res.send(output);
+        }
+    });
+    console.log(req.params.uuid);
+});
+
 // POST NEW
-app.post('/api/vi/todos',function(req,res){
-    let uuid=uuid();
+app.post('/api/v1/todos', function (req, res) {
+    let uuid = uuidv4();
+    let label = req.body.label;
+
+    if (label !== '' && label != undefined && label != null) {
+        db.run('INSERT INTO todos VALUES(?,?,?)', uuid, label, 0, function (err, row) {
+            if (err)
+                console.log(err);
+            else
+                res.send('Success for [', row, ']')
+        });
+    } else {
+        res.send('Problem to add data');
+    }
+});
+
+// PUT EXISTING
+app.put('/api/v1/todos', function (req, res) {
+
 });
