@@ -80,10 +80,17 @@ app.post('/api/v1/todos', function (req, res) {
 
     if (label !== '' && label != undefined && label != null) {
         db.run('INSERT INTO todos VALUES(?,?,?)', uuid, label, 0, function (err, row) {
-            if (err)
+            if (err) {
                 console.log(err);
-            else
-                res.send('Success for [', row, ']')
+            } else {
+                db.get('SELECT * FROM todos WHERE uuid = ?', uuid, function (err, row) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        res.send(row);
+                    }
+                })
+            }
         });
     } else {
         res.send('Problem to add data');
@@ -95,7 +102,9 @@ app.put('/api/v1/todos', function (req, res) {
     let uuid = req.body.uuid;
     let done = req.body.done;
 
-    if (uuid !== '' && uuid !== undefined && uuid !== null && label !== '' && label !== undefined && label !== null && (done == 1 || done == 0)) {
+    console.log(uuid)
+
+    if (uuid !== '' && uuid !== undefined && uuid !== null && (done == 1 || done == 0)) {
         db.get('SELECT * FROM todos WHERE uuid = ?', uuid, function (err, row) {
             if (err) {
                 console.log(err);
@@ -103,11 +112,17 @@ app.put('/api/v1/todos', function (req, res) {
                 if (row.uuid.length === 0) {
                     res.send('Todo not found...');
                 } else {
-                    db.update('UPDATE todos SET done = ? WHERE uuid = ?', done, uuid, function (err, row) {
+                    db.run('UPDATE todos SET done = ? WHERE uuid = ?', done, uuid, function (err, row) {
                         if (err) {
                             console.log(err);
                         } else {
-                            console.log(row);
+                            db.get('SELECT * FROM todos WHERE uuid = ?', uuid, function (err, row) {
+                                if (err) {
+                                    console.log(err);
+                                } else {
+                                    res.send(row);
+                                }
+                            });
                         }
                     });
                 }
