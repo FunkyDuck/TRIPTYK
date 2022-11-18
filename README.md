@@ -22,12 +22,12 @@ Dans le cadre de ce test, il vous est demandé de faire un fork de ce repository
 - Vous pouvez utilisez nodejs et toute bibliothèque utile à vos yeux
 - Vous pouvez le faire en Javascript ou Typescript
 - Vous devez utilisez SQLlite pour la base de donnée
-- Le résultat de votre travail devra etre sur votre Fork en public
+- Le résultat de votre travail devra etre sur votre repository en public
 
 ## Consignes Temporelle
 
 - Vous avez 4h pour le test.
-- Dès que vous avez terminé avant faites le nous savoir par mail à l'adresse dev@triptyk.eu avec le lien de votre repository.
+- Dès que vous avez terminé faites le nous savoir par mail à l'adresse dev@triptyk.eu avec le lien de votre repository.
 - Une réunion de 15 minutes dans l'après midi sera organisée pour faire un code review avec vous.
 
 
