@@ -61,8 +61,13 @@ app.get('/api/v1/todos/:uuid', function (req, res) {
         if (err) {
             console.log(err);
         } else {
-            output.push({ uuid: row.uuid, label: row.label, done: row.done });
-            res.send(output);
+            if (row.uuid.length === 0) {
+                res.send('Todo not found...');
+            } else {
+                output.push({ uuid: row.uuid, label: row.label, done: row.done });
+                res.send(output);
+            }
+
         }
     });
     console.log(req.params.uuid);
@@ -87,5 +92,28 @@ app.post('/api/v1/todos', function (req, res) {
 
 // PUT EXISTING
 app.put('/api/v1/todos', function (req, res) {
+    let uuid = req.body.uuid;
+    let done = req.body.done;
 
+    if (uuid !== '' && uuid !== undefined && uuid !== null && label !== '' && label !== undefined && label !== null && (done == 1 || done == 0)) {
+        db.get('SELECT * FROM todos WHERE uuid = ?', uuid, function (err, row) {
+            if (err) {
+                console.log(err);
+            } else {
+                if (row.uuid.length === 0) {
+                    res.send('Todo not found...');
+                } else {
+                    db.update('UPDATE todos SET done = ? WHERE uuid = ?', done, uuid, function (err, row) {
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            console.log(row);
+                        }
+                    });
+                }
+            }
+        });
+    } else {
+        res.send('Problem with your data');
+    }
 });
