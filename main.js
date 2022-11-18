@@ -34,7 +34,7 @@ console.log('Server listening on port :: ', app.get('port'));
 app.listen(app.get('port'));
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, 'todo.html'));
+    res.sendFile(path.join(__dirname, '/todo/todo.html'));
 });
 
 // GET ALL

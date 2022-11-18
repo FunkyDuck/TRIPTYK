@@ -1,0 +1,28 @@
+$color1: #1b2631;
+$color2: #d5dbdb;
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+    background: $color1;
+    color: $color2;
+    padding: 1vh 10vw;
+    width: 80vw;
+    height: 3vh;
+}
+
+nav h1 {
+    font-size: 3vh;
+}
+
+nav h1 svg {
+    height: 3vh;
+}
+
+main {
+    padding: 0 10vw;
+    width: 80vw;
+    height: 95vh;
+}
