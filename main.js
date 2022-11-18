@@ -2,6 +2,7 @@ const { v4: uuidv4 } = require('uuid');
 
 const express = require('express');
 const sqlite = require('sqlite3').verbose();
+const path = require('path');
 
 const db = new sqlite.Database('triptyktest.db');
 
@@ -27,12 +28,13 @@ db.serialize(function () {
 
 const app = express();
 app.use(express.json());
+app.use(express.static('public'));
 app.set('port', 4444);
 console.log('Server listening on port :: ', app.get('port'));
 app.listen(app.get('port'));
 
 app.get('/', function (req, res) {
-    res.send('API V1');
+    res.sendFile(path.join(__dirname, 'todo.html'));
 });
 
 // GET ALL
